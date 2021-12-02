@@ -11,7 +11,7 @@ import java.awt.event.MouseListener;
 /**
  * This class is used for ...
  * @autor Juan Pablo Pantoja Gutierrez juan.pablo.pantoja@correounivalle.edu.co
- * @version v.1.1.0 date:21/11/2021
+ * @version v.1.2.0 date:21/11/2021
  */
 public class GUI extends JFrame {
     private JButton miFoto, miHobby, misExpectativas;
@@ -89,7 +89,22 @@ public class GUI extends JFrame {
         private ImageIcon image;
         @Override
         public void keyTyped(KeyEvent e) {
-
+            if(e.getKeyChar()== 'm'){
+                panelDatos.removeAll();
+                textoExpectativas.setFont(new Font("Times New Roman",Font.BOLD,22));
+                textoExpectativas.setForeground(Color.white);
+                textoExpectativas.setText("Siempre me ha gustado bastante este tipo\n"+
+                        "de programación ya que lo veía en los ultimos años\n"+
+                        "del colegio entonces me encuentro bastante emocionado\n"+
+                        "y contento de estar viendo estas temáticasespero aprender\n"+
+                        "bastante y poder familiarizar y afianzar conocimientos\n"+
+                        "para desarrollar habilidades que me permitan finalizar\n"+
+                        "el curso de manera satisfactoria.");
+                textoExpectativas.setBackground(null);
+                panelDatos.add(textoExpectativas);
+            }
+            revalidate();
+            repaint();
         }
 
         @Override
@@ -104,7 +119,20 @@ public class GUI extends JFrame {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-
+            if(e.getComponent()==miFoto && e.getClickCount()==1){
+                panelDatos.removeAll();
+                image = new ImageIcon(getClass().getResource("/recursos/FotoMia.jpg"));
+                labelImage.setIcon(image);
+                panelDatos.add(labelImage);
+            }
+            if(e.getComponent()==miHobby && e.getClickCount()==2){
+                panelDatos.removeAll();
+                image = new ImageIcon(getClass().getResource("/recursos/Hobbys.jpg"));
+                labelImage.setIcon(image);
+                panelDatos.add(labelImage);
+            }
+            revalidate();
+            repaint();
         }
 
         @Override
