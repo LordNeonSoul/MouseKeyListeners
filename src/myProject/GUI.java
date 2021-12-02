@@ -1,26 +1,33 @@
 package myProject;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * This class is used for ...
  * @autor Juan Pablo Pantoja Gutierrez juan.pablo.pantoja@correounivalle.edu.co
- * @version v.1.0.0 date:21/11/2021
+ * @version v.1.1.0 date:21/11/2021
  */
 public class GUI extends JFrame {
-
+    private JButton miFoto, miHobby, misExpectativas;
+    private JPanel panelBotones, panelDatos;
+    private JLabel labelImage;
+    private JTextArea textoExpectativas;
     private Header headerProject;
-
+    private Escucha escucha;
     /**
      * Constructor of GUI class
      */
     public GUI(){
         initGUI();
-
         //Default JFrame configuration
-        this.setTitle("The Title app");
-        this.setSize(600,550);
+        this.setTitle("Mi Presentación");
+        this.setSize(600,540);
         //this.pack();
         this.setResizable(true);
         this.setVisible(true);
@@ -35,10 +42,33 @@ public class GUI extends JFrame {
     private void initGUI() {
         //Set up JFrame Container's Layout
         //Create Listener Object and Control Object
+        escucha = new Escucha();
         //Set up JComponents
-        headerProject = new Header("Header ...", Color.BLACK);
-
+        headerProject = new Header("Hola, soy Juan Pablo, oprime los botones...", Color.BLACK);
         this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
+
+        panelDatos = new JPanel();
+        panelDatos.setBorder((BorderFactory.createTitledBorder(null,"Un poco más de mí...", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, new Font("Calibri",Font.PLAIN,20), Color.white)));
+        panelDatos.setBackground(Color.darkGray);
+        this.add(panelDatos,BorderLayout.CENTER);
+
+        miFoto = new JButton("Este soy yo...");
+        miFoto.addMouseListener(escucha);
+        miHobby = new JButton("Este es mi Hobby...");
+        miHobby.addMouseListener(escucha);
+        misExpectativas = new JButton("Creo que...");
+        misExpectativas.addKeyListener(escucha);
+
+        panelBotones = new JPanel();
+        panelBotones.add(miFoto);
+        panelBotones.add(miHobby);
+        panelBotones.add(misExpectativas);
+        panelBotones.setBackground(Color.darkGray);
+
+        this.add(panelBotones, BorderLayout.SOUTH);
+
+        labelImage = new JLabel();
+        textoExpectativas = new JTextArea(10,12);
     }
 
     /**
@@ -55,7 +85,46 @@ public class GUI extends JFrame {
     /**
      * inner class that extends an Adapter Class or implements Listeners used by GUI class
      */
-    private class Escucha {
+    private class Escucha implements MouseListener, KeyListener {
+        private ImageIcon image;
+        @Override
+        public void keyTyped(KeyEvent e) {
 
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
     }
 }
